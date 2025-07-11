@@ -43,3 +43,56 @@ ul li:last-child {
     border-bottom: none;
 }
 
+/* 마이페이지 내 회원 조작 버튼 박스 스타일 */
+.user-actions {
+    margin-bottom: 40px;
+    display: flex;
+    gap: 15px;       /* 버튼 간격 */
+    justify-content: flex-start; /* 왼쪽 정렬 */
+    align-items: center;          /* 세로 가운데 정렬 */
+}
+
+/* 버튼 공통 스타일 */
+.user-actions .btn {
+    font-size: 1rem;        /* 글자 크기 통일 */
+    padding: 8px 16px;      /* 버튼 크기 통일 */
+    border-radius: 5px;
+    cursor: pointer;
+    border: none;
+    transition: background-color 0.3s ease;
+    text-decoration: none;  /* a 태그 버튼에 밑줄 없애기 */
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* 기본 버튼 색상 */
+.user-actions .btn {
+    background-color: #19863aa1;
+    color: white;
+}
+
+/* 버튼 호버 효과 */
+.user-actions .btn:hover {
+    background-color: #19863ab6;
+}
+
+/* 탈퇴 버튼 스타일 */
+.user-actions .btn-danger {
+    background-color: #dd6a20;
+}
+
+.user-actions .btn-danger:hover {
+    background-color: #d1641e;
+}
+
+/* form 태그 안 버튼 스타일 강제 적용 */
+.user-actions form button.btn-danger {
+    font-size: 1rem;
+    padding: 8px 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    border: none;
+}
+
+

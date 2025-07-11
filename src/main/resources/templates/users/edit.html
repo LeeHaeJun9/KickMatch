@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>회원 정보 수정 - KickMatch</title>
+    <link rel="stylesheet" href="/css/edit.css" />
+</head>
+<body th:replace="~{layout}">
+<section th:fragment="content">
+    <h2>회원 정보 수정</h2>
+
+    <form th:action="@{/users/edit}" method="post">
+        <div>
+            <label for="nickname">닉네임</label>
+            <input type="text" id="nickname" name="nickname" th:value="${user.nickname}" required />
+        </div>
+        <div>
+            <label for="email">이메일</label>
+            <input type="email" id="email" name="email" th:value="${user.email}" required />
+        </div>
+        <div>
+            <label for="password">새 비밀번호 (변경 원할 때만 입력)</label>
+            <input type="password" id="password" name="password" placeholder="비밀번호 변경 시 입력" />
+        </div>
+        <div>
+            <button type="submit">수정 완료</button>
+        </div>
+    </form>
+
+    <div style="color:red;" th:if="${errorMessage}" th:text="${errorMessage}"></div>
+    <div style="color:green;" th:if="${successMessage}" th:text="${successMessage}"></div>
+</section>
+</body>
+</html>

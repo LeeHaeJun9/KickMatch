@@ -29,7 +29,7 @@ form div {
 /* 각 입력 필드 레이블 */
 label {
     display: block;
-    margin-bottom: 6px;
+    margin-bottom: 12px;
     font-weight: 600;
     color: #34495e;
     margin-left: 10px;

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="ko" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<html lang="ko" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -7,17 +8,29 @@
   <link rel="stylesheet" href="/css/mypage.css" />
 </head>
 <body th:replace="~{layout}">
-<section th:fragment="content">
+<section th:fragment="content" class="mypage-container">
+
   <h2>마이페이지</h2>
 
-  <h3>내 예약 정보</h3>
-  <ul>
-    <!-- 예약 리스트를 model로 넘겨서 출력 -->
-    <li th:each="res : ${reservations}">
-      <span th:text="${res.location.name}"></span> /
-      <span th:text="${#dates.format(res.reservedAt, 'yyyy-MM-dd HH:mm')}"></span>
-    </li>
-  </ul>
+  <div class="user-info">
+    <div class="user-actions">
+      <a href="/users/edit" class="btn">회원 정보 수정</a>
+      <form action="/users/delete" method="post" onsubmit="return confirm('정말 탈퇴하시겠습니까?');">
+        <button type="submit" class="btn btn-danger">회원 탈퇴</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- 📅 내 예약 정보 -->
+  <div class="reservation-info">
+    <h3>내 예약 정보</h3>
+    <ul>
+      <li th:each="res : ${reservations}">
+        <span th:text="${res.location.name}"></span> /
+        <span th:text="${#dates.format(res.reservedAt, 'yyyy-MM-dd HH:mm')}"></span>
+      </li>
+    </ul>
+  </div>
 
 </section>
 </body>

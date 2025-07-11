@@ -15,7 +15,7 @@
   <input class="search" type="text" placeholder="어디서 뛰실 건가요?" />
   <div class="nav-right">
     <span sec:authorize="isAuthenticated()">
-      <span th:text="${#authentication.name}"></span>님 환영합니다
+      <span th:if="${nickname}" th:text="${nickname + '님 환영합니다'}"></span>
     </span>
 
     <a sec:authorize="!isAuthenticated()" th:href="@{/users/login}">로그인</a>

@@ -17,7 +17,6 @@ import org.springframework.web.servlet.handler.HandlerMappingIntrospector;
 @RequiredArgsConstructor
 public class SecurityConfig {
 
-    private final UserService userService;
     private final ApplicationContext applicationContext; // 💡 추가
 
     @Bean
@@ -25,7 +24,7 @@ public class SecurityConfig {
         http
                 // 🔐 CSRF 보호 해제: 특정 경로만 (Deprecated 없이)
                 .csrf(csrf -> csrf
-                        .ignoringRequestMatchers("/h2-console/**", "/users/register", "/users/login", "/users/logout")
+                        .ignoringRequestMatchers("/h2-console/**", "/users/register", "/users/login", "/users/logout", "/users/delete")
                 )
 
                 // 🧱 H2 콘솔 iframe 허용 (Spring Security 6+)

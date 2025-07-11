@@ -1,0 +1,45 @@
+form {
+    max-width: 500px;
+    margin: 0px auto;
+    padding: 30px 40px 10px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+form label {
+    display: block;
+    margin-bottom: 17px;
+    font-weight: 600;
+    color: #34495e;
+    margin-left: 10px;
+}
+
+form input, form select {
+    width: 80%;
+    padding: 8px 12px;
+    border: 1.5px solid #bdc3c7;
+    border-radius: 6px;
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+    display: block;
+    margin: 0 auto;
+    margin-bottom: 30px;
+}
+
+form button, form a.btn {
+    width: 60%;
+    padding: 8px 20px;
+    background-color: #19863aa1;
+    color: white;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+    display: block;      /* 블록 요소로 만들기 */
+    margin: 50px auto 20px ;
+}
+
+form button:hover, form a.btn:hover {
+    background-color: #19863ab6;
+}
