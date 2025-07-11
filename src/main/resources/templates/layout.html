@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org"
+
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+  <meta charset="UTF-8">
+  <title>KickMatch</title>
+  <link rel="stylesheet" th:href="@{/css/style.css}" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+</head>
+<body>
+
+<header>
+  <a class="nav-left" th:href="@{/}">KickMatch</a>
+  <input class="search" type="text" placeholder="어디서 뛰실 건가요?" />
+  <div class="nav-right">
+    <span sec:authorize="isAuthenticated()">
+      <span th:text="${#authentication.name}"></span>님 환영합니다
+    </span>
+
+    <a sec:authorize="!isAuthenticated()" th:href="@{/users/login}">로그인</a>
+    <a sec:authorize="!isAuthenticated()" th:href="@{/users/register}">회원가입</a>
+
+    <!-- 로그인을 한 사용자에게만 표시 -->
+    <a sec:authorize="isAuthenticated()" th:href="@{/users/mypage}">마이페이지</a>
+    <a sec:authorize="isAuthenticated()" th:href="@{/users/logout}">로그아웃</a>
+  </div>
+
+</header>
+
+<main>
+  <div th:replace="~{::content}"></div>  <!-- 여기에 페이지 content가 삽입됨 -->
+</main>
+
+
+<footer>
+  ⓒ 2025 KickMatch | 풋살을 더 즐겁게, 더 가깝게
+</footer>
+
+</body>
+</html>

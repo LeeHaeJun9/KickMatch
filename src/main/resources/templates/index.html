@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <title>KickMatch 메인</title>
+</head>
+<body>
+<div th:replace="~{layout}">
+    <section th:fragment="content">
+        <div class="promotion">
+            <img th:src="@{/images/banner.png}" alt="배너 이미지" />
+        </div>
+        <div class="container">
+            <div class="icon-menu">
+                <div class="icon-item"><i class="fas fa-calendar-day"></i><span>오늘의 경기</span></div>
+                <div class="icon-item"><i class="fas fa-futbol"></i><span>구장 예약</span></div>
+                <div class="icon-item"><i class="fas fa-user-graduate"></i><span>입문자</span></div>
+                <div class="icon-item"><i class="fas fa-users"></i><span>추천 팀</span></div>
+                <div class="icon-item"><i class="fas fa-comments"></i><span>게시판</span></div>
+            </div>
+        </div>
+        <div class="section">
+            <h3>인기 구장</h3>
+            <div class="card-grid">
+                <div class="card">
+                    <a href="#"><img th:src="@{/images/football1.jpeg}" /></a>
+                    <p>서울 강남 도곡에프씨</p>
+                </div>
+                <div class="card">
+                    <a href="#"><img th:src="@{/images/football2.jpeg}" /></a>
+                    <p>서울 강동 송파 풋살장</p>
+                </div>
+                <div class="card">
+                    <a href="#"><img th:src="@{/images/fooball3.jpg}" /></a>
+                    <p>고양 AoA 풋살 스타디움</p>
+                </div>
+                <div class="card">
+                    <a href="#"><img th:src="@{/images/football4.jpg}" /></a>
+                    <p>인천 계양 고고풋살</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h3>풋살 규칙</h3>
+            <div class="rules-section">
+                <div class="rule-box">
+                    <img th:src="@{/images/footsal.jpg}" />
+                </div>
+                <div class="rule-box">
+                    <ul>
+                        <li>👟 한 팀당 5명의 선수(골키퍼 포함)</li>
+                        <li>⏱️ 전후반 각 20분씩, 총 40분 경기</li>
+                        <li>⚽ 킥오프, 킥인으로 시작</li>
+                        <li>❌ 경고 2회는 퇴장</li>
+                        <li>🧤 퇴장 → 2분간 교체 불가 / 실점 시 교체 허용</li>
+                        <li>🙌 핸드볼 금지 / 매너 플레이 필수</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h3>팀 추천</h3>
+            <div class="card-grid">
+                <div class="card">
+                    <a href="#"><img th:src="@{/images/d1.png}" class="team-logo" /></a>
+                    <p>🔥 초보자 환영 팀</p>
+                </div>
+                <div class="card">
+                    <a href="#"><img th:src="@{/images/d1.png}" class="team-logo" /></a>
+                    <p>⚡ 퇴근 후 야간팀</p>
+                </div>
+                <div class="card">
+                    <a href="#"><img th:src="@{/images/d.png}" class="team-logo" /></a>
+                    <p>🎯 주말 고정팀</p>
+                </div>
+                <div class="card">
+                    <a href="#"><img th:src="@{/images/d.png}" class="team-logo" /></a>
+                    <p>💪 실력 상급자 팀</p>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+</body>
+</html>

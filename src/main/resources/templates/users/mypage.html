@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>마이페이지 - KickMatch</title>
+  <link rel="stylesheet" href="/css/mypage.css" />
+</head>
+<body th:replace="~{layout}">
+<section th:fragment="content">
+  <h2>마이페이지</h2>
+
+  <h3>내 예약 정보</h3>
+  <ul>
+    <!-- 예약 리스트를 model로 넘겨서 출력 -->
+    <li th:each="res : ${reservations}">
+      <span th:text="${res.location.name}"></span> /
+      <span th:text="${#dates.format(res.reservedAt, 'yyyy-MM-dd HH:mm')}"></span>
+    </li>
+  </ul>
+
+</section>
+</body>
+</html>
