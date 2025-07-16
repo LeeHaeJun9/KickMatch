@@ -36,6 +36,7 @@ public class SecurityConfig {
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("/h2-console/**", "/users/register", "/users/login", "/css/**", "/js/**","/","/images/**").permitAll()
                         .requestMatchers("/admin/**").hasRole("ADMIN")
+                        .requestMatchers("/match/create").hasRole("ADMIN")
                         .anyRequest().authenticated()
                 )
 

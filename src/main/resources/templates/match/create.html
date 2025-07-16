@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>매칭 등록</title>
+    <link rel="stylesheet" href="/css/matchCreate.css" />
+</head>
+<body th:replace="~{layout}">
+<section class="match-form-container" th:fragment="content">
+    <div class="error-message" th:if="${error}">
+        <p th:text="${error}"></p>
+    </div>
+    <h2>매칭 등록</h2>
+    <form th:action="@{/match/create}" th:object="${match}" method="post">
+        <label>제목</label>
+        <input type="text" th:field="*{title}" required/><br/>
+
+        <label>설명</label>
+        <textarea th:field="*{description}" required></textarea><br/>
+
+        <label>경기 일시</label>
+        <input type="datetime-local" name="matchDate"
+               th:field="*{matchDate}" th:attr="min=${now}" required />
+
+        <label>최대 인원 수</label>
+        <input type="number" th:field="*{maxPlayers}" required/><br/>
+
+        <label>장소 선택</label>
+        <select th:field="*{location.id}" required>
+            <option th:each="loc : ${locations}" th:value="${loc.id}" th:text="${loc.name}"></option>
+        </select><br/>
+
+        <button type="submit">등록하기</button>
+    </form>
+</section>
+</body>
+</html>

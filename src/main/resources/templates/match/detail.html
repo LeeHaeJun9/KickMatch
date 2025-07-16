@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>매칭 상세</title>
+  <link rel="stylesheet" href="/css/matchDetail.css" />
+</head>
+<body th:replace="~{layout}">
+<section th:fragment="content" class="match-detail">
+  <div class="match-actions" th:if="${#authorization.expression('hasRole(''ROLE_ADMIN'')')}">
+    <a th:href="@{|/match/${match.id}/edit|}">수정</a>
+    <form th:action="@{|/match/${match.id}/delete|}" method="post">
+      <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+      <button type="submit" onclick="return confirm('정말 삭제하시겠습니까?')">삭제</button>
+    </form>
+  </div>
+  <h2 th:text="${match.title}">매칭 제목</h2>
+
+  <div class="match-info">
+    <div><strong>날짜:</strong> <span th:text="${#temporals.format(match.matchDate, 'yyyy-MM-dd HH:mm')}"></span></div>
+    <div><strong>최대 인원:</strong> <span th:text="${match.maxPlayers}"></span></div>
+    <div><strong>장소:</strong> <span th:text="${match.location.name}"></span></div>
+    <div><strong>설명:</strong> <p th:text="${match.description}"></p></div>
+  </div>
+
+  <!-- 메시지 및 에러 출력 -->
+  <div th:if="${message}" style="color: green;">
+    <p th:text="${message}"></p>
+  </div>
+  <div th:if="${error}" style="color: red;">
+    <p th:text="${error}"></p>
+  </div>
+
+  <!-- 참가하기 버튼: POST 폼에 CSRF 토큰 추가 -->
+  <div>
+    <!-- 중복 참가, 정원 초과 모두 아니면 버튼 노출 -->
+    <form th:if="${isParticipated == false and isFull == false}"
+          th:action="@{/match/{id}/join(id=${match.id})}" method="post">
+      <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+      <button type="submit">참가하기</button>
+    </form>
+
+    <form th:if="${isParticipated == true}"
+          th:action="@{/match/{id}/cancel(id=${match.id})}" method="post">
+      <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+      <button type="submit">참가 취소</button>
+    </form>
+  </div>
+
+  <div>
+    <h3>후기</h3>
+    <ul>
+      <li th:each="comment : ${comments}">
+        <strong th:text="${comment.user.nickname}">작성자</strong>:
+        <span th:text="${comment.content}">내용</span>
+      </li>
+    </ul>
+  </div>
+
+  <!-- 후기 작성 -->
+  <form th:if="${canWriteComment}"
+        th:action="@{'/match/' + ${match.id} + '/comments'}" method="post">
+    <textarea name="content" rows="3" cols="40" required></textarea><br>
+    <button type="submit">후기 작성</button>
+  </form>
+
+</section>
+</body>
+</html>

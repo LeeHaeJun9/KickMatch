@@ -1,0 +1,107 @@
+section.match-detail {
+    max-width: 700px;
+    margin: 40px auto;
+    padding: 30px 40px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    font-family: 'Arial', sans-serif;
+}
+
+/* 제목 스타일 */
+.match-detail h2 {
+    font-size: 28px;
+    color: #333;
+    text-align: center;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #eee;
+    padding-bottom: 10px;
+}
+
+/* 수정/삭제 버튼 */
+.match-actions {
+    text-align: right;
+    margin-bottom: 15px;
+}
+
+.match-actions a,
+.match-actions form button {
+    background-color: #3b82f6;
+    color: white;
+    border: none;
+    padding: 8px 14px;
+    margin-left: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    text-decoration: none;
+}
+
+.match-actions form {
+    display: inline;
+}
+
+/* 매치 정보 */
+.match-info div {
+    margin-bottom: 10px;
+    font-size: 16px;
+    color: #444;
+}
+
+.match-info strong {
+    display: inline-block;
+    width: 100px;
+    color: #555;
+}
+
+/* 후기 리스트 */
+.match-detail ul {
+    list-style: none;
+    padding-left: 0;
+    margin-top: 15px;
+}
+
+.match-detail li {
+    border-bottom: 1px solid #eee;
+    padding: 8px 0;
+    font-size: 15px;
+}
+
+/* 후기 작성 */
+.match-detail textarea {
+    width: 100%;
+    padding: 10px;
+    font-size: 15px;
+    border-radius: 6px;
+    border: 1.5px solid #ccc;
+    resize: vertical;
+    box-sizing: border-box;
+    margin-top: 10px;
+}
+
+.match-detail button {
+    background-color: #3b82f6;
+    color: white;
+    border: none;
+    padding: 10px 16px;
+    font-size: 16px;
+    border-radius: 5px;
+    margin-top: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.match-detail button:hover {
+    background-color: #2563eb;
+}
+
+/* 돌아가기 링크 */
+.match-detail a {
+    display: inline-block;
+    margin-top: 20px;
+    text-decoration: none;
+}
+
+.match-detail a:hover {
+    background-color: #2563eb;
+}

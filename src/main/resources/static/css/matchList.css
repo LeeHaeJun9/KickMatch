@@ -1,0 +1,50 @@
+section.match-list {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 20px 30px;
+    background-color: #fff;
+    box-shadow: 0 0 12px rgba(0,0,0,0.1);
+    border-radius: 8px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+section.match-list h2 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 25px;
+}
+
+section.match-list table {
+    width: 85%;
+    border-collapse: collapse;
+    font-size: 16px;
+    text-align: center;
+    margin: 0 auto;
+}
+
+section.match-list thead {
+    background-color: #19863aa1;
+    color: white;
+}
+
+section.match-list thead th {
+    padding: 12px 15px;
+    text-align: center;
+}
+
+section.match-list tbody tr {
+    border-bottom: 1px solid #ddd;
+    transition: background-color 0.3s ease;
+}
+
+section.match-list tbody tr:hover {
+    background-color: #f1f5f9;
+}
+
+section.match-list tbody td {
+    padding: 12px 15px;
+}
+
+section.match-list tbody td a:hover {
+    text-decoration: underline;
+}

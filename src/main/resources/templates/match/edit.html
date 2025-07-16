@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>매치 수정</title>
+</head>
+<body th:replace="~{layout}">
+<section th:fragment="content">
+    <h1>매치 수정</h1>
+
+    <form th:action="@{|/match/${match.id}/edit|}" method="post">
+        <label>제목: <input type="text" name="title" th:value="${match.title}" /></label><br/>
+        <label>설명: <textarea name="description" th:text="${match.description}"></textarea></label><br/>
+        <label>날짜:
+            <input type="datetime-local" name="matchDate"
+                   th:value="${#temporals.format(match.matchDate, 'yyyy-MM-dd''T''HH:mm')}" />
+        </label><br/>
+        <label>최대 인원: <input type="number" name="maxPlayers" th:value="${match.maxPlayers}" /></label><br/>
+        <label>장소:
+            <select name="locationId">
+                <option th:each="loc : ${locations}"
+                        th:value="${loc.id}"
+                        th:text="${loc.name}"
+                        th:selected="${loc.id == match.location.id}">
+                </option>
+            </select>
+        </label><br/>
+        <button type="submit">수정</button>
+    </form>
+
+    <a th:href="@{|/match/${match.id}|}">취소</a>
+</section>
+</body>
+</html>

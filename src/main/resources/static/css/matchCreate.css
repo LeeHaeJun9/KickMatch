@@ -1,0 +1,77 @@
+.match-form-container {
+    max-width: 600px;
+    margin: 40px auto;
+    background-color: #fff;
+    padding: 30px 40px;
+    box-shadow: 0 0 12px rgba(0,0,0,0.1);
+    border-radius: 8px;
+}
+
+.match-form-container h2 {
+    text-align: center;
+    margin-bottom: 25px;
+    color: #333;
+}
+
+.match-form-container label {
+    display: block;
+    font-weight: 600;
+    margin-top: 15px;
+    margin-bottom: 6px;
+    color: #555;
+}
+
+.match-form-container input[type="text"],
+.match-form-container input[type="datetime-local"],
+.match-form-container input[type="number"],
+.match-form-container textarea,
+.match-form-container select {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1.5px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    box-sizing: border-box;
+    transition: border-color 0.3s ease;
+}
+
+.match-form-container input[type="text"]:focus,
+.match-form-container input[type="datetime-local"]:focus,
+.match-form-container input[type="number"]:focus,
+.match-form-container textarea:focus,
+.match-form-container select:focus {
+    border-color: #19863ab6;
+    outline: none;
+}
+
+.match-form-container textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+.match-form-container button {
+    margin-top: 30px;
+    width: 100%;
+    padding: 12px 0;
+    font-size: 18px;
+    background-color: #19863aa1;
+    border: none;
+    border-radius: 6px;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.match-form-container button:hover {
+    background-color: #19863ab6;
+}
+
+.match-form-container .error-message {
+    background-color: #fee2e2;
+    border: 1px solid #fca5a5;
+    padding: 12px 15px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    color: #b91c1c;
+    font-weight: 600;
+}
