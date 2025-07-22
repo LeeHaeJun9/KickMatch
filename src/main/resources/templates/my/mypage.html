@@ -10,8 +10,6 @@
 <body th:replace="~{layout}">
 <section th:fragment="content" class="mypage-container">
 
-  <h2>마이페이지</h2>
-
   <div class="user-info">
     <div class="user-actions">
       <a href="/users/edit" class="btn">회원 정보 수정</a>
@@ -21,16 +19,26 @@
     </div>
   </div>
 
-  <!-- 📅 내 예약 정보 -->
-  <div class="reservation-info">
-    <h3>내 예약 정보</h3>
-    <ul>
-      <li th:each="res : ${reservations}">
-        <span th:text="${res.location.name}"></span> /
-        <span th:text="${#dates.format(res.reservedAt, 'yyyy-MM-dd HH:mm')}"></span>
-      </li>
-    </ul>
+  <div th:if="${joinedMatches != null and !joinedMatches.isEmpty()}" class="matches-list">
+    <h3>내가 참가한 경기</h3>
+    <div th:each="match : ${joinedMatches}" class="match-card">
+      <h4 th:text="${match.title}">경기 제목</h4>
+      <p>
+        <strong>날짜:</strong>
+        <span th:text="${#temporals.format(match.matchDate, 'yyyy-MM-dd HH:mm')}">날짜</span>
+      </p>
+      <p>
+        <strong>장소:</strong>
+        <span th:text="${match.location.name}">장소 이름</span>
+      </p>
+      <a th:href="@{|/match/${match.id}|}" class="btn btn-primary">상세 보기</a>
+    </div>
   </div>
+
+  <div th:if="${joinedMatches == null or joinedMatches.isEmpty()}" class="no-matches">
+    <p>참가한 경기가 없습니다.</p>
+  </div>
+
 
 </section>
 </body>

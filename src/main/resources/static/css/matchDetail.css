@@ -26,15 +26,16 @@ section.match-detail {
 
 .match-actions a,
 .match-actions form button {
-    background-color: #3b82f6;
+    background-color: #19863aa1;
     color: white;
     border: none;
-    padding: 8px 14px;
-    margin-left: 10px;
+    padding: 6px 12px;
+    margin-left: 5px;
     border-radius: 5px;
     cursor: pointer;
     font-size: 14px;
     text-decoration: none;
+    display: inline-block;
 }
 
 .match-actions form {
@@ -46,6 +47,7 @@ section.match-detail {
     margin-bottom: 10px;
     font-size: 16px;
     color: #444;
+    line-height: 60px;
 }
 
 .match-info strong {
@@ -80,28 +82,55 @@ section.match-detail {
 }
 
 .match-detail button {
-    background-color: #3b82f6;
+    background-color: #19863aa1;
     color: white;
     border: none;
-    padding: 10px 16px;
-    font-size: 16px;
+    padding: 6px 12px;
+    margin-left: 5px;
     border-radius: 5px;
-    margin-top: 10px;
     cursor: pointer;
-    transition: background-color 0.3s;
+    font-size: 14px;
+    text-decoration: none;
+    display: inline-block;
+    margin-top: 20px;
 }
 
 .match-detail button:hover {
-    background-color: #2563eb;
+    background-color: #19863ab6;
 }
 
 /* 돌아가기 링크 */
 .match-detail a {
-    display: inline-block;
-    margin-top: 20px;
+    background-color: #19863aa1;
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    margin-left: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
     text-decoration: none;
+    display: inline-block;
 }
 
 .match-detail a:hover {
-    background-color: #2563eb;
+    background-color: #19863ab6;
+}
+
+.btn-link {
+    background-color: #19863aa1;
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    margin-left: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    text-decoration: none;
+    display: inline-block;
+    margin-top: 80px;
+}
+
+.btn-link:hover {
+    background-color: #19863ab6;
 }

@@ -2,6 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>매치 수정</title>
+    <link rel="stylesheet" href="/css/matchEdit.css" />
 </head>
 <body th:replace="~{layout}">
 <section th:fragment="content">
@@ -24,10 +25,11 @@
                 </option>
             </select>
         </label><br/>
-        <button type="submit">수정</button>
+        <div class="button-group">
+            <button type="submit">수정</button>
+            <a th:href="@{|/match/${match.id}|}" class="cancel-button">취소</a>
+        </div>
     </form>
-
-    <a th:href="@{|/match/${match.id}|}">취소</a>
 </section>
 </body>
 </html>

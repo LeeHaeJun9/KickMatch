@@ -174,3 +174,6 @@ footer {
     border-radius: 10px;
     margin-top: 40px;
 }
+a {
+    text-decoration: none;
+}

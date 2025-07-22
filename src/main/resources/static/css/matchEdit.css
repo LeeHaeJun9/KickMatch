@@ -1,0 +1,80 @@
+section {
+    max-width: 700px;
+    margin: 40px auto;
+    padding: 30px 40px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    font-family: 'Arial', sans-serif;
+}
+
+section h1 {
+    font-size: 28px;
+    color: #333;
+    text-align: center;
+    margin-bottom: 30px;
+    border-bottom: 2px solid #eee;
+    padding-bottom: 10px;
+}
+
+form label {
+    display: block;
+    margin-bottom: 20px;
+    color: #444;
+    font-size: 16px;
+}
+
+form input[type="text"],
+form input[type="number"],
+form input[type="datetime-local"],
+form textarea,
+form select {
+    width: 100%;
+    padding: 10px;
+    font-size: 15px;
+    border-radius: 6px;
+    border: 1.5px solid #ccc;
+    box-sizing: border-box;
+    margin-top: 5px;
+}
+
+form textarea {
+    resize: vertical;
+    height: 100px;
+}
+
+.button-group {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.button-group button,
+.button-group .cancel-button {
+    padding: 10px 30px;
+    border-radius: 6px;
+    font-size: 18px;
+    text-decoration: none;
+    text-align: center;
+}
+
+.button-group button {
+    background-color: #19863aa1;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.button-group button:hover {
+    background-color: #19863ab6;
+}
+
+.button-group .cancel-button {
+    background-color: #ccc;
+    color: #333;
+}
+
+.button-group .cancel-button:hover {
+    background-color: #bbb;
+}

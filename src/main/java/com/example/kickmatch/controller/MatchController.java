@@ -70,6 +70,7 @@ public class MatchController {
     @GetMapping("/{id}")
     public String matchDetail(@PathVariable Long id,
                               @AuthenticationPrincipal org.springframework.security.core.userdetails.User springUser,
+                              @RequestParam(value = "edit", required = false) Long editingCommentId,
                               Model model) {
 
         Match match = matchService.findById(id)
@@ -97,6 +98,7 @@ public class MatchController {
         model.addAttribute("isParticipated", isParticipated);
         model.addAttribute("isFull", isFull);
         model.addAttribute("canWriteComment", canWriteComment);
+        model.addAttribute("editingCommentId", editingCommentId);
 
         return "match/detail";
     }

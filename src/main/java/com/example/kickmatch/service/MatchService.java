@@ -9,8 +9,10 @@ import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -91,6 +93,13 @@ public class MatchService {
 
     @Transactional
     public void cancelParticipation(Long matchId, User user) {
+        Match match = matchRepository.findById(matchId)
+                .orElseThrow(() -> new IllegalArgumentException("매치를 찾을 수 없습니다."));
+
+        if (match.getMatchDate().isBefore(LocalDate.now().atStartOfDay())) {
+            throw new IllegalStateException("이미 종료된 매치는 취소할 수 없습니다.");
+        }
+
         Optional<Participant> participantOpt = participantRepository.findByMatchIdAndUserId(matchId, user.getId());
         if (participantOpt.isEmpty()) {
             throw new IllegalStateException("참가 기록이 없습니다.");
@@ -109,4 +118,14 @@ public class MatchService {
     public void deleteMatch(Long id) {
         matchRepository.deleteById(id);
     }
+
+    public List<Match> findMatchesUserParticipated(Long userId) {
+        List<Participant> participants = participantRepository.findByUserId(userId);
+
+
+        return participants.stream()
+                .map(Participant::getMatch)
+                .collect(Collectors.toList());
+    }
+
 }

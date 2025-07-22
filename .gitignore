@@ -55,3 +55,5 @@ application.yml
 .gradle/
 build/
 
+data/*.db
+data/*.trace.db
