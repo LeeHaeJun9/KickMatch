@@ -34,7 +34,7 @@ public class SecurityConfig {
 
                 // ✅ URL 별 보안 정책 설정
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/h2-console/**", "/users/register", "/users/login", "/css/**", "/js/**","/","/images/**").permitAll()
+                        .requestMatchers("/h2-console/**", "/users/register", "/users/login", "/css/**", "/js/**","/","/images/**","/uploads/**").permitAll()
                         .requestMatchers("/admin/**").hasRole("ADMIN")
                         .requestMatchers("/match/create").hasRole("ADMIN")
                         .anyRequest().authenticated()

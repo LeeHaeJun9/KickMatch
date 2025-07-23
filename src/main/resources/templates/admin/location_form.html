@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <title>구장 등록</title>
+</head>
+<body>
+<h1>구장 등록</h1>
+
+<form th:action="@{/admin/location/new}" th:object="${location}" method="post" enctype="multipart/form-data">
+  <p>
+    <label for="name">구장명:</label>
+    <input type="text" id="name" th:field="*{name}" />
+  </p>
+  <p>
+    <label for="address">주소:</label>
+    <input type="text" id="address" th:field="*{address}" />
+  </p>
+  <p>
+    <label for="region">지역:</label>
+    <input type="text" id="region" th:field="*{region}" />
+  </p>
+  <p>
+    <label for="imageFile">이미지 파일:</label>
+    <input type="file" id="imageFile" name="imageFile" accept="image/*" />
+  </p>
+  <p>
+    <label for="description">설명:</label>
+    <textarea id="description" th:field="*{description}"></textarea>
+  </p>
+  <button type="submit">등록</button>
+</form>
+
+<p><a th:href="@{/admin/location/list}">구장 목록으로 돌아가기</a></p>
+</body>
+</html>

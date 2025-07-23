@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <title>구장 목록</title>
+</head>
+<body>
+<h1>구장 목록</h1>
+
+<table border="1" cellpadding="8" cellspacing="0">
+  <thead>
+  <tr>
+    <th>구장명</th>
+    <th>주소</th>
+    <th>지역</th>
+    <th>이미지</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr th:each="location : ${locations}">
+    <td th:text="${location.name}"></td>
+    <td th:text="${location.address}"></td>
+    <td th:text="${location.region}"></td>
+    <td><img th:src="${location.imageUrl}" alt="이미지"/></td>
+  </tr>
+  </tbody>
+</table>
+
+<p><a th:href="@{/admin/location/new}">구장 등록하기</a></p>
+</body>
+</html>

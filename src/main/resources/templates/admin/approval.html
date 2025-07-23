@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="ko"
-      xmlns:th="http://www.thymeleaf.org">
+      xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
 <head>
   <meta charset="UTF-8" />
   <title>관리자 승인 요청</title>
@@ -10,6 +10,10 @@
 
 <section th:fragment="content">
   <h2>관리자 승인 요청 목록</h2>
+
+  <div style="text-align: right;">
+    <a th:href="@{/admin/location/new}" class="btn">구장 등록</a>
+  </div>
 
   <div th:if="${message}" style="color: green; margin-bottom: 10px;">
     <p th:text="${message}"></p>
@@ -43,7 +47,6 @@
     </tbody>
   </table>
 
-  <p><a th:href="@{/}">메인으로 돌아가기</a></p>
 </section>
 
 </body>

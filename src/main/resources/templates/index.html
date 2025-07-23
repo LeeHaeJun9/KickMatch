@@ -17,6 +17,11 @@
                 <div class="icon-item"><i class="fas fa-user-graduate"></i><span>입문자</span></div>
                 <div class="icon-item"><i class="fas fa-users"></i><span>추천 팀</span></div>
                 <div class="icon-item"><i class="fas fa-comments"></i><span>게시판</span></div>
+                <div th:if="${#authorization.expression('hasRole(''ADMIN'')')}" class="icon-item">
+                    <a th:href="@{/admin/approval}">
+                        <i class="fas fa-user-shield"></i><span>관리자 페이지</span>
+                    </a>
+                </div>
             </div>
         </div>
         <div class="section">

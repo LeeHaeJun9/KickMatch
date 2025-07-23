@@ -12,7 +12,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.time.LocalDateTime;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Controller
 @RequiredArgsConstructor
@@ -24,7 +26,6 @@ public class MyPageController {
 
     @GetMapping("/mypage")
     public String myPage(Model model, @AuthenticationPrincipal org.springframework.security.core.userdetails.User springUser) {
-        System.out.println("🌟 springUser username: " + springUser.getUsername());
 
         User user = userService.findByUsername(springUser.getUsername())
                 .orElseThrow(() -> new UsernameNotFoundException("사용자를 찾을 수 없습니다."));
@@ -32,9 +33,21 @@ public class MyPageController {
 
         List<Match> joinedMatches = matchService.findMatchesUserParticipated(user.getId());
 
+        LocalDateTime now = LocalDateTime.now();
 
-        model.addAttribute("joinedMatches", joinedMatches);
+        List<Match> upcomingMatches = joinedMatches.stream()
+                        .filter(match -> match.getMatchDate().isAfter(now))
+                        .collect(Collectors.toList());
+
+        List<Match> pastMatches = joinedMatches.stream()
+                        .filter(match -> match.getMatchDate().isBefore(now))
+                        .collect(Collectors.toList());
+
+
+//        model.addAttribute("joinedMatches", joinedMatches);
         model.addAttribute("user", user);
+        model.addAttribute("upcomingMatches", upcomingMatches);
+        model.addAttribute("pastMatches", pastMatches);
         return "my/mypage";
     }
 }

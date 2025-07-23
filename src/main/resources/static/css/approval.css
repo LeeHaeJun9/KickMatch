@@ -36,9 +36,6 @@ tbody td {
     text-align: center;
 }
 
-tbody tr:hover {
-    background-color: #dceefc;
-}
 
 button {
     background-color: #19863aa1;
@@ -65,4 +62,21 @@ p a {
 
 p a:hover {
     text-decoration: underline;
+}
+.btn {
+    display: inline-block;
+    padding: 6px 12px;
+    background-color: #19863aa1;
+    color: white;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    font-size: 15px;
+    margin-bottom: 20px;
+    transition: background-color 0.3s ease;
+}
+.btn:hover {
+    background-color: #219150;
 }
