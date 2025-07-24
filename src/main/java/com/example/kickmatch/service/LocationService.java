@@ -24,4 +24,9 @@ public class LocationService {
     public void deleteById(Long id) {
         locationRepository.deleteById(id);
     }
+
+    public Location findById(Long id) {
+        return locationRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("구장 없음"));
+    }
 }

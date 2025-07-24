@@ -3,6 +3,8 @@ package com.example.kickmatch.domain;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.List;
+
 @Entity
 @Table(name = "locations")
 @Getter @Setter
@@ -26,4 +28,8 @@ public class Location {
 
     private Double latitude;  // 위도 (선택)
     private Double longitude; // 경도 (선택)
+
+    @OneToMany(mappedBy = "location")
+    private List<Match> matches;
+
 }

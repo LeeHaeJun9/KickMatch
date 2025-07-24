@@ -3,34 +3,43 @@
 <head>
   <meta charset="UTF-8" />
   <title>구장 등록</title>
+  <link rel="stylesheet" th:href="@{/css/locationForm.css}" />
 </head>
-<body>
-<h1>구장 등록</h1>
+<body th:replace="~{layout}">
+<section th:fragment="content" id="location-form-section">
+  <h1 id="form-title">구장 등록</h1>
 
-<form th:action="@{/admin/location/new}" th:object="${location}" method="post" enctype="multipart/form-data">
-  <p>
-    <label for="name">구장명:</label>
-    <input type="text" id="name" th:field="*{name}" />
-  </p>
-  <p>
-    <label for="address">주소:</label>
-    <input type="text" id="address" th:field="*{address}" />
-  </p>
-  <p>
-    <label for="region">지역:</label>
-    <input type="text" id="region" th:field="*{region}" />
-  </p>
-  <p>
-    <label for="imageFile">이미지 파일:</label>
-    <input type="file" id="imageFile" name="imageFile" accept="image/*" />
-  </p>
-  <p>
-    <label for="description">설명:</label>
-    <textarea id="description" th:field="*{description}"></textarea>
-  </p>
-  <button type="submit">등록</button>
-</form>
+  <form id="location-form"
+        th:action="${location.id} == null ? @{/admin/location/new} : @{/admin/location/update/{id}(id=${location.id})}"
+        th:object="${location}" method="post" enctype="multipart/form-data">
 
-<p><a th:href="@{/admin/location/list}">구장 목록으로 돌아가기</a></p>
+    <div class="form-group">
+      <label for="name">구장명:</label>
+      <input type="text" id="name" th:field="*{name}" />
+    </div>
+
+    <div class="form-group">
+      <label for="address">주소:</label>
+      <input type="text" id="address" th:field="*{address}" />
+    </div>
+
+    <div class="form-group">
+      <label for="region">지역:</label>
+      <input type="text" id="region" th:field="*{region}" />
+    </div>
+
+    <div class="form-group">
+      <label for="imageFile">이미지 파일:</label>
+      <input type="file" id="imageFile" name="imageFile" accept="image/*" />
+    </div>
+
+    <div class="form-group">
+      <label for="description">설명:</label>
+      <textarea id="description" th:field="*{description}"></textarea>
+    </div>
+
+    <button type="submit" id="submit-btn" th:text="${location.id} == null ? '등록' : '수정'"></button>
+  </form>
+</section>
 </body>
 </html>

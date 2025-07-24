@@ -17,6 +17,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
@@ -62,9 +63,20 @@ public class MatchController {
 
     @GetMapping("/list")
     public String listMatchesAlias(Model model) {
-        List<Match> matches = matchService.findAll();
+        List<Match> matches = matchService.findAllFutureMatches();
         model.addAttribute("matches", matches);
         return "match/list";
+    }
+
+    @GetMapping("/today")
+    public String listTodayMatches(Model model) {
+        LocalDate today = LocalDate.now();
+
+        // 오늘 날짜에 해당하는 매치만 조회
+        List<Match> todayMatches = matchService.findMatchesByDate(today);
+        model.addAttribute("matches", todayMatches);
+        model.addAttribute("pageTitle", "오늘의 매칭 목록");
+        return "match/list"; // 기존 리스트 뷰 재사용 가능
     }
 
     @GetMapping("/{id}")

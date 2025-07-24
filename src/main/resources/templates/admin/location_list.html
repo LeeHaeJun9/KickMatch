@@ -3,29 +3,39 @@
 <head>
   <meta charset="UTF-8" />
   <title>구장 목록</title>
+  <link rel="stylesheet" th:href="@{/css/locationList.css}" />
 </head>
-<body>
-<h1>구장 목록</h1>
-
-<table border="1" cellpadding="8" cellspacing="0">
-  <thead>
-  <tr>
-    <th>구장명</th>
-    <th>주소</th>
-    <th>지역</th>
-    <th>이미지</th>
-  </tr>
-  </thead>
-  <tbody>
-  <tr th:each="location : ${locations}">
-    <td th:text="${location.name}"></td>
-    <td th:text="${location.address}"></td>
-    <td th:text="${location.region}"></td>
-    <td><img th:src="${location.imageUrl}" alt="이미지"/></td>
-  </tr>
-  </tbody>
-</table>
-
-<p><a th:href="@{/admin/location/new}">구장 등록하기</a></p>
+<body th:replace="~{layout}">
+<section id="location-list-section" th:fragment="content">
+  <h1 id="location-list-title">구장 목록</h1>
+  <div th:if="${error}" class="error-message" th:text="${error}"></div>
+  <table id="location-table">
+    <thead>
+    <tr>
+      <th>구장명</th>
+      <th>주소</th>
+      <th>지역</th>
+      <th>관리</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="location : ${locations}"
+        th:onclick="|window.location.href='@{/admin/location/{id}(id=${location.id})}'|"
+        style="cursor: pointer;">
+      <td th:text="${location.name}"></td>
+      <td th:text="${location.address}"></td>
+      <td th:text="${location.region}"></td>
+      <td>
+        <div class="action-buttons">
+          <a class="edit-btn" th:href="@{/admin/location/update/{id}(id=${location.id})}">수정</a>
+          <form th:action="@{/admin/location/delete/{id}(id=${location.id})}" method="post" class="delete-form">
+            <input type="submit" value="삭제" onclick="return confirm('정말 삭제하시겠습니까?');"/>
+          </form>
+        </div>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</section>
 </body>
 </html>

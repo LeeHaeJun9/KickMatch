@@ -10,6 +10,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -128,4 +130,17 @@ public class MatchService {
                 .collect(Collectors.toList());
     }
 
+    public List<Match> findAllFutureMatches() {
+        LocalDateTime now = LocalDateTime.now();
+        return matchRepository.findAll().stream()
+                .filter(match -> match.getMatchDate().isAfter(now))
+                .collect(Collectors.toList());
+    }
+
+    public List<Match> findMatchesByDate(LocalDate date) {
+        // matchDate 필드가 LocalDateTime이라면, 오늘 00:00 ~ 23:59:59 범위로 검색
+        LocalDateTime startOfDay = date.atStartOfDay();
+        LocalDateTime endOfDay = date.atTime(LocalTime.MAX);
+        return matchRepository.findAllByMatchDateBetween(startOfDay, endOfDay);
+    }
 }

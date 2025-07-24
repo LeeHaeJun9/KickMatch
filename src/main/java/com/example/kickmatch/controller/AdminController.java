@@ -82,4 +82,57 @@ public class AdminController {
         model.addAttribute("locations", locationService.findAll());
         return "admin/location_list";
     }
+
+
+    @GetMapping("/location/update/{id}")
+    public String showEditLocationForm(@PathVariable Long id, Model model) {
+        Location location = locationService.findById(id);
+        model.addAttribute("location", location);
+        return "admin/location_form";  // 등록 폼과 수정 폼을 동일한 뷰로 사용 가능
+    }
+
+    @PostMapping("/location/update/{id}")
+    public String updateLocation(@PathVariable Long id,
+                                 @RequestParam String name,
+                                 @RequestParam String address,
+                                 @RequestParam String region,
+                                 @RequestParam String description,
+                                 @RequestParam(required = false, name = "imageFile") MultipartFile imageFile) {
+        Location location = locationService.findById(id);
+
+        location.setName(name);
+        location.setAddress(address);
+        location.setRegion(region);
+        location.setDescription(description);
+
+        if (imageFile  != null && !imageFile .isEmpty()) {
+            String newImageUrl = imageService.updateImage(imageFile , location.getImageUrl());
+            location.setImageUrl(newImageUrl);
+        }
+
+        locationService.save(location);
+        return "redirect:/admin/location/list";
+    }
+
+    @PostMapping("/location/delete/{id}")
+    public String deleteLocation(@PathVariable Long id, RedirectAttributes redirectAttributes) {
+        Location location = locationService.findById(id);
+
+        if (location.getMatches() != null && !location.getMatches().isEmpty()) {
+            redirectAttributes.addFlashAttribute("error", "해당 구장은 등록된 매치가 있어 삭제할 수 없습니다.");
+            return "redirect:/admin/location/list";
+        }
+
+        imageService.deleteImage(location.getImageUrl());
+        locationService.deleteById(id);
+        return "redirect:/admin/location/list";
+    }
+
+    @GetMapping("/location/{id}")
+    public String showLocationDetail(@PathVariable Long id, Model model) {
+        Location location = locationService.findById(id);
+        model.addAttribute("location", location);
+        return "admin/location_detail"; // 뷰 이름
+    }
+
 }

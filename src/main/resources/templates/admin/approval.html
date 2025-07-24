@@ -12,7 +12,9 @@
   <h2>관리자 승인 요청 목록</h2>
 
   <div style="text-align: right;">
+    <a th:href="@{/match/create}" class="btn">매치 등록</a>
     <a th:href="@{/admin/location/new}" class="btn">구장 등록</a>
+    <a th:href="@{/admin/location/list}" class="btn">구장 목록</a>
   </div>
 
   <div th:if="${message}" style="color: green; margin-bottom: 10px;">

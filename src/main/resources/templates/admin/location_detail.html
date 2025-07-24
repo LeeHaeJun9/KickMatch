@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <title>구장 상세보기</title>
+  <link rel="stylesheet" th:href="@{/css/locationDetail.css}" />
+</head>
+<body th:replace="~{layout}">
+<section th:fragment="content" class="detail-container">
+
+  <h1 th:text="${location.name}">구장명</h1>
+
+  <p><strong>주소:</strong> <span th:text="${location.address}"></span></p>
+  <p><strong>지역:</strong> <span th:text="${location.region}"></span></p>
+  <div th:if="${location.imageUrl != null}">
+    <p><strong>이미지:</strong></p><img th:src="${location.imageUrl}" alt="구장 이미지" />
+  </div>
+  <p><strong>설명:</strong></p>
+  <p th:text="${location.description}"></p>
+
+</section>
+</body>
+</html>

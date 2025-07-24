@@ -1,0 +1,108 @@
+#location-list-section {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 30px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    font-family: 'Arial', sans-serif;
+}
+
+#location-list-title {
+    font-size: 32px;
+    text-align: center;
+    color: #333;
+    margin-bottom: 30px;
+}
+
+#location-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+#location-table th,
+#location-table td {
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    text-align: center;
+}
+
+#location-table th {
+    background-color: #19863aa1;
+    color: white;
+}
+
+.action-buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px; /* 수정/삭제 사이 간격 */
+}
+
+
+.detail-btn,
+#add-location-link {
+    padding: 6px 9px;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+    display: inline-block;
+    background-color: #9b9ca5;
+    font-size: 15px;
+}
+
+.delete-form {
+    margin: 0; /* form 자체의 기본 마진 제거 */
+}
+
+.edit-btn {
+    padding: 6px 12px;
+    background-color: #19863aa1;
+    color: white;
+    text-decoration: none;
+    border: none;
+    border-radius: 5px;
+    font-size: 14px;
+    font-family: inherit;
+    line-height: 1.4;
+    display: inline-block;
+}
+
+.edit-btn:hover {
+    background-color: #19863ab6;
+}
+
+/* 삭제 버튼 (form 안의 input[type=submit]) */
+.delete-form input[type="submit"] {
+    padding: 6px 12px;
+    background-color: #df5346;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 14px;
+    font-family: inherit;
+    line-height: 1.4;
+    cursor: pointer;
+    display: inline-block;
+}
+
+.delete-form input[type="submit"]:hover {
+    background-color: rgba(195, 49, 40, 0.86);
+}
+
+.error-message {
+    background-color: #ffe6e6;
+    color: #cc0000;
+    border: 1px solid #ffcccc;
+    padding: 12px 16px;
+    border-radius: 6px;
+    margin-bottom: 20px;
+    font-weight: bold;
+    text-align: center;
+}
+
+#location-table tbody tr:hover {
+    background-color: #f2f2f2;
+}
+

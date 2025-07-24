@@ -31,5 +31,32 @@ public class ImageService {
 
         return "/uploads/" + filename;
     }
+
+    public void deleteImage(String imageUrl) {
+        if (imageUrl == null || imageUrl.isBlank()) return;
+
+        // 예: "/uploads/파일명.png" → 파일명만 추출
+        String filename = Paths.get(imageUrl).getFileName().toString();
+        Path filePath = Paths.get(uploadDir).resolve(filename);
+
+        try {
+            Files.deleteIfExists(filePath);
+        } catch (IOException e) {
+            e.printStackTrace();
+            // 삭제 실패 시 로그만 출력하고 무시
+        }
+    }
+
+
+    public String updateImage(MultipartFile newImage, String oldImageUrl) {
+        // 기존 이미지 삭제
+        if (oldImageUrl != null && !oldImageUrl.isBlank()) {
+            deleteImage(oldImageUrl);
+        }
+
+        // 새 이미지 저장
+        return saveImage(newImage);
+    }
+
 }
 
