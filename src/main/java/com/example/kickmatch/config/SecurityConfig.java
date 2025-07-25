@@ -15,8 +15,6 @@ import org.springframework.security.web.SecurityFilterChain;
 @RequiredArgsConstructor
 public class SecurityConfig {
 
-//    private final ApplicationContext applicationContext; // 💡 추가
-//    private final UserService userService;
     private final UserRepository userRepository;
 
     @Bean
@@ -35,6 +33,7 @@ public class SecurityConfig {
                 // ✅ URL 별 보안 정책 설정
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("/h2-console/**", "/users/register", "/users/login", "/css/**", "/js/**","/","/images/**","/uploads/**").permitAll()
+                        .requestMatchers("/reservation/**").hasAnyRole("USER", "ADMIN")
                         .requestMatchers("/admin/**").hasRole("ADMIN")
                         .requestMatchers("/match/create").hasRole("ADMIN")
                         .anyRequest().authenticated()

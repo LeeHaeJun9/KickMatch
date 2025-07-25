@@ -6,7 +6,7 @@
 </head>
 <body th:replace="~{layout}">
 <section class="match-list" th:fragment="content">
-  <h2>매칭 목록</h2>
+  <h2 th:text="${pageTitle}">매칭 목록</h2>
   <table border="1">
     <thead>
     <tr>

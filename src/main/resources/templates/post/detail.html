@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title th:text="${post.title}">게시글 제목</title>
+    <link rel="stylesheet" href="/css/postDetail.css">
+</head>
+<body th:replace="~{layout}">
+
+<section th:fragment="content">
+    <div class="post-detail">
+        <h1 th:text="${post.title}">제목</h1>
+<!--        <p>작성자: <span th:text="${post.writer.username}">user</span></p>-->
+        <hr>
+        <div class="content" th:text="${post.content}">내용</div>
+        <hr>
+        <div class="post-meta">
+            <div class="meta-left">
+                <span>조회수: <span th:text="${post.viewCount}"></span></span>
+                <span style="margin-left: 15px;">공감 수: <span th:text="${likeCount}">0</span></span>
+            </div>
+
+            <div class="meta-center" th:if="${#authentication.authenticated} and ${post.writer.username != #authentication.name}">
+                <form th:action="@{/posts/{id}/like(id=${post.id})}" method="post">
+                    <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+                    <button type="submit" th:text="${liked} ? '💔 공감 취소' : '❤️ 공감'">❤️ 공감</button>
+                </form>
+            </div>
+
+            <div class="meta-right">
+                <span>작성일: <span th:text="${#temporals.format(post.createdAt, 'yyyy-MM-dd HH:mm')}"></span></span>
+            </div>
+        </div>
+        <!-- 수정/삭제 버튼은 작성자 본인일 때만 표시 -->
+        <div class="post-buttons">
+            <a th:href="@{/posts/list}" class="btn-action btn-edit">목록으로</a>
+
+            <div class="writer-actions" th:if="${#authentication.name == post.writer.username}">
+                <a th:href="@{/posts/edit/{id}(id=${post.id})}" class="btn-action btn-edit">수정</a>
+                <form th:action="@{/posts/delete/{id}(id=${post.id})}" method="post" onsubmit="return confirm('정말 삭제하시겠습니까?')">
+                    <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+                    <button type="submit" class="btn-action btn-delete">삭제</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+</body>
+</html>

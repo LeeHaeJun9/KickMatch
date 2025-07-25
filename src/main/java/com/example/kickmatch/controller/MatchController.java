@@ -4,7 +4,6 @@ import com.example.kickmatch.domain.Comment;
 import com.example.kickmatch.domain.Location;
 import com.example.kickmatch.domain.Match;
 import com.example.kickmatch.domain.User;
-import com.example.kickmatch.repository.CommentRepository;
 import com.example.kickmatch.repository.LocationRepository;
 import com.example.kickmatch.service.CommentService;
 import com.example.kickmatch.service.MatchService;
@@ -65,6 +64,7 @@ public class MatchController {
     public String listMatchesAlias(Model model) {
         List<Match> matches = matchService.findAllFutureMatches();
         model.addAttribute("matches", matches);
+        model.addAttribute("pageTitle", "매칭 목록");
         return "match/list";
     }
 

@@ -1,0 +1,30 @@
+<!-- templates/post/edit.html -->
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>글 수정</title>
+  <link rel="stylesheet" href="/css/postEdit.css">
+</head>
+<body th:replace="~{layout}">
+
+<section id="post-edit-section" th:fragment="content">
+  <h2 id="form-title">글 수정</h2>
+
+  <form th:action="@{'/posts/edit/' + ${post.id}}" method="post" th:object="${post}">
+    <div class="form-group">
+      <label for="title-input">제목:</label>
+      <input type="text" id="title-input" th:field="*{title}" required />
+    </div>
+
+    <div class="form-group">
+      <label for="content-textarea">내용:</label>
+      <textarea id="content-textarea" th:field="*{content}" rows="10" required></textarea>
+    </div>
+
+    <div class="button-wrapper">
+      <button type="submit" id="submit-button">수정</button>
+    </div>
+  </form>
+</section>
+</body>
+</html>

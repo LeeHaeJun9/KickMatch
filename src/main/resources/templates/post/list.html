@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>게시판 목록</title>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="/css/postList.css">
+</head>
+<body th:replace="~{layout}">
+
+<section th:fragment="content" id="post-list-section">
+  <h1 id="post-list-title">게시글 목록</h1>
+
+  <table id="post-list-table" border="1">
+    <thead>
+    <tr>
+      <th class="col-id">번호</th>
+      <th class="col-title">제목</th>
+      <th class="col-writer">작성자</th>
+      <th class="col-date">작성일</th>
+      <th class="col-views">조회수</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="post : ${posts}"
+        th:onclick="|window.location='@{/posts/{id}(id=${post.id})}'|"
+        style="cursor: pointer;">
+      <td class="col-id" th:text="${post.id}">1</td>
+      <td class="col-title" th:text="${post.title}">제목</td>
+      <td class="col-writer" th:text="${post.writer.nickname}">작성자</td>
+      <td class="col-date" th:text="${#temporals.format(post.createdAt, 'yyyy-MM-dd HH:mm')}">2025-07-25</td>
+      <td class="col-views" th:text="${post.viewCount}"></td>
+    </tr>
+    </tbody>
+  </table>
+
+  <div id="write-post-wrapper">
+    <a id="write-post-btn" class="button" th:href="@{/posts/create}">글쓰기</a>
+  </div>
+</section>
+
+</body>
+</html>

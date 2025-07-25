@@ -1,0 +1,69 @@
+/* postEdit.css */
+
+#post-edit-section {
+    max-width: 600px;
+    margin: 50px auto;
+    background-color: #fff;
+    padding: 35px 45px;
+    box-shadow: 0 0 12px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    font-family: 'Arial', sans-serif;
+}
+
+#form-title {
+    text-align: center;
+    font-size: 26px;
+    margin-bottom: 25px;
+    color: #2c3e50;
+    font-weight: bold;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+#post-edit-section label {
+    display: block;
+    font-weight: 600;
+    margin-top: 15px;
+    margin-bottom: 6px;
+    color: #555;
+}
+
+#title-input,
+#content-textarea {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1.5px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    box-sizing: border-box;
+    transition: border-color 0.3s ease;
+}
+
+#title-input:focus,
+#content-textarea:focus {
+    border-color: #19863ab6;
+    outline: none;
+}
+
+.button-wrapper {
+    text-align: center;
+    margin-top: 30px;
+}
+
+#submit-button {
+    width: 50%;
+    padding: 12px 0;
+    font-size: 18px;
+    background-color: #19863aa1;
+    border: none;
+    border-radius: 6px;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#submit-button:hover {
+    background-color: #19863ab6;
+}

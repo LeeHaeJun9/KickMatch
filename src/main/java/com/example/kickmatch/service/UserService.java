@@ -3,11 +3,13 @@ package com.example.kickmatch.service;
 import com.example.kickmatch.domain.User;
 import com.example.kickmatch.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.*;
 import org.springframework.stereotype.Service;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
@@ -25,7 +27,7 @@ public class UserService implements UserDetailsService {
         return org.springframework.security.core.userdetails.User.builder()
                 .username(user.getUsername())
                 .password(user.getPassword())
-                .roles(user.getRole().replace("ROLE_", ""))  // roles()에는 "USER", "ADMIN"만 넣어야 합니다.
+                .authorities(Collections.singletonList(new SimpleGrantedAuthority(user.getRole())))
                 .build();
     }
 

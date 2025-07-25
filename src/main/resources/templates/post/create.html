@@ -1,0 +1,31 @@
+<!-- templates/post/create.html -->
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>글 작성</title>
+    <link rel="stylesheet" th:href="@{/css/postCreate.css}">
+</head>
+<body th:replace="~{layout}">
+
+<section id="post-create-section" th:fragment="content">
+    <h2 id="form-title">글 작성</h2>
+
+    <form id="post-create-form" th:action="@{/posts/create}" method="post" th:object="${post}">
+        <div class="form-group">
+            <label for="title-input">제목:</label>
+            <input type="text" id="title-input" name="title" th:field="*{title}" required />
+        </div>
+
+        <div class="form-group">
+            <label for="content-textarea">내용:</label>
+            <textarea id="content-textarea" name="content" th:field="*{content}" rows="10" required></textarea>
+        </div>
+
+        <div class="button-wrapper">
+            <button type="submit" id="submit-button">작성</button>
+        </div>
+    </form>
+</section>
+
+</body>
+</html>

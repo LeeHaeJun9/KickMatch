@@ -1,0 +1,137 @@
+.post-detail {
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 40px;
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+}
+
+.post-detail h1 {
+    font-size: 30px;
+    margin-bottom: 25px;
+    color: #2c3e50;
+    text-align: center;
+}
+
+.post-detail p {
+    margin: 8px 0;
+    color: #555;
+    font-size: 16px;
+}
+
+.post-detail hr {
+    margin: 30px 0;
+    border: none;
+    border-top: 1px solid #ddd;
+}
+
+.post-detail .content {
+    font-size: 18px;
+    color: #333;
+    white-space: pre-wrap; /* 줄바꿈 유지 */
+    margin-bottom: 30px;
+}
+
+/* 공감 버튼 */
+.post-detail form button {
+    background-color: #f05454;
+    color: white;
+    border: none;
+    padding: 10px 18px;
+    font-size: 15px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.post-detail form button:hover {
+    background-color: #d94343;
+}
+
+/* 수정/삭제/목록 링크 */
+.post-detail a {
+    display: inline-block;
+    margin-right: 12px;
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+}
+
+.post-detail form {
+    display: inline;
+}
+
+.post-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 20px 0;
+    font-size: 14px;
+    color: #555;
+    flex-wrap: wrap;
+}
+
+.meta-left, .meta-center, .meta-right {
+    flex: 1;
+    text-align: center;
+}
+
+.meta-left {
+    text-align: left;
+}
+
+.meta-right {
+    text-align: right;
+}
+
+.post-buttons {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 80px;
+    padding: 0 10px;
+}
+
+.writer-actions a,
+.writer-actions form {
+    display: inline-block;
+    margin-left: 10px;
+}
+
+.btn-action {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 18px;
+    font-size: 15px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background-color 0.3s;
+    min-width: 50px; /* 버튼 폭 고정 */
+    height: 42px;      /* 버튼 높이 고정 */
+    box-sizing: border-box;
+}
+
+/* 수정 버튼 - 초록색 */
+.btn-edit {
+    background-color: #19863aa1;
+    color: white;
+}
+.btn-edit:hover {
+    background-color: #19863ab6;
+}
+
+/* 삭제 버튼 - 빨간색 */
+.btn-delete {
+    background-color: #f05454;
+    color: white;
+}
+.btn-delete:hover {
+    background-color: #d94343;
+}
+
