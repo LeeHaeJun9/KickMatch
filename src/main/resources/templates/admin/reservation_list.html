@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="ko">
+<head>
+    <meta charset="UTF-8" />
+    <title>관리자 예약 목록</title>
+    <link rel="stylesheet" th:href="@{/css/reservationList.css}" />
+</head>
+<body th:replace="~{layout}">
+<section th:fragment="content" class="admin-reservation-list">
+    <h1>예약 목록</h1>
+
+    <table>
+        <thead>
+        <tr>
+            <th>예약자</th>
+            <th>구장명</th>
+            <th>예약 시작 시간</th>
+            <th>이용 시간(분)</th>
+            <th>상태</th>
+            <th>작업</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="reservation : ${reservations}">
+            <td th:text="${reservation.user.username}">예약자</td>
+            <td th:text="${reservation.location.name}">구장명</td>
+            <td th:text="${#temporals.format(reservation.reservedAt, 'yyyy-MM-dd HH:mm')}">시간</td>
+            <td th:text="${reservation.durationMinutes}">60</td>
+            <td th:text="${reservation.status}">상태</td>
+            <td>
+                <form th:action="@{|/admin/reservation/${reservation.id}/confirm|}" method="post" th:if="${reservation.status.name() == 'PENDING'}">
+                    <button type="submit">확정</button>
+                </form>
+                <span th:if="${reservation.status.name() != 'PENDING'}">확정 완료</span>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</section>
+</body>
+</html>

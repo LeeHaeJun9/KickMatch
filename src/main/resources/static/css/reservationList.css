@@ -1,0 +1,82 @@
+/* admin.css */
+
+h1 {
+    color: #2c3e50;
+    margin-bottom: 20px;
+    font-weight: 700;
+    font-size: 1.8rem;
+    text-align: center;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 30px;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+thead th {
+    background-color: #19863aa1;
+    color: white;
+    padding: 12px 15px;
+    text-align: center;
+    font-weight: 600;
+}
+
+tbody tr:nth-child(even) {
+    background-color: #f2f6fb;
+}
+
+tbody td {
+    padding: 12px 15px;
+    border-bottom: 1px solid #ddd;
+    text-align: center;
+}
+
+button {
+    background-color: #19863aa1;
+    border: none;
+    color: white;
+    padding: 6px 12px;
+    margin-right: 8px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #219150;
+}
+
+p a {
+    color: #19863aa1;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+p a:hover {
+    text-decoration: underline;
+}
+
+.btn {
+    display: inline-block;
+    padding: 6px 12px;
+    background-color: #19863aa1;
+    color: white;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    font-size: 15px;
+    margin-bottom: 20px;
+    transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+    background-color: #219150;
+}

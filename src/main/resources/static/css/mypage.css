@@ -140,5 +140,70 @@ ul li:last-child {
     text-align: center;
 }
 
+section.reservation-list {
+    max-width: 700px;
+    margin: 40px auto;
+    padding: 20px 30px;
+    background-color: #fff;
+    box-shadow: 0 0 12px rgba(0,0,0,0.1);
+    border-radius: 8px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
 
+section.reservation-list h2 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 25px;
+}
 
+section.reservation-list table {
+    width: 85%;
+    border-collapse: collapse;
+    font-size: 16px;
+    text-align: center;
+    margin: 0 auto;
+}
+
+section.reservation-list thead {
+    background-color: #19863aa1;
+    color: white;
+}
+
+section.reservation-list thead th {
+    padding: 12px 15px;
+    text-align: center;
+}
+
+section.reservation-list tbody tr {
+    border-bottom: 1px solid #ddd;
+    transition: background-color 0.3s ease;
+}
+
+section.reservation-list tbody tr:hover {
+    background-color: #f1f5f9;
+}
+
+section.reservation-list tbody td {
+    padding: 12px 15px;
+}
+
+section.reservation-list tbody td a:hover {
+    text-decoration: underline;
+}
+
+.no-reservations {
+    max-width: 900px;
+    margin: 20px auto;
+    font-size: 16px;
+    color: #888;
+    text-align: center;
+    font-style: italic;
+}
+
+.clickable-row {
+    cursor: pointer;
+}
+
+.clickable-row:hover {
+    background-color: #f1f5f9;
+}

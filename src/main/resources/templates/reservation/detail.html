@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml" lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>예약 상세</title>
+    <link rel="stylesheet" th:href="@{/css/reservationDetail.css}">
+</head>
+<body th:replace="~{layout}">
+<section th:fragment="content" class="reservation-detail-section">
+    <h1>예약 상세 정보</h1>
+
+    <div class="reservation-card">
+        <p><strong>예약자:</strong> <span th:text="${reservation.user.username}">이름</span></p>
+        <p><strong>구장명:</strong> <span th:text="${reservation.location.name}">구장 이름</span></p>
+        <p><strong>예약 시간:</strong> <span th:text="${#temporals.format(reservation.reservedAt, 'yyyy-MM-dd HH:mm')}">시간</span></p>
+        <p><strong>이용 시간:</strong> <span th:text="${reservation.durationMinutes}"></span> 분</p>
+        <p><strong>상태:</strong> <span th:text="${reservation.status.displayName}"></span></p>
+    </div>
+
+    <!-- 관리자 권한 있을 때만 확정 버튼 표시 (Spring Security 사용 시) -->
+    <div sec:authorize="hasRole('ADMIN')">
+        <form th:if="${reservation.status.name() == 'PENDING'}"
+              th:action="@{|/admin/reservation/${reservation.id}/confirm|}"
+              method="post"
+              onsubmit="return confirm('이 예약을 확정하시겠습니까?');">
+            <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+            <button type="submit">예약 확정</button>
+        </form>
+    </div>
+
+    <form th:if="${reservation.status.name() == 'PENDING' or reservation.status.name() == 'CONFIRMED'}"
+          th:action="@{/reservation/{id}/cancel(id=${reservation.id})}" method="post"
+          onsubmit="return confirm('정말로 예약을 취소하시겠습니까?');">
+        <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+        <button type="submit">예약 취소</button>
+    </form>
+</section>
+</body>
+</html>

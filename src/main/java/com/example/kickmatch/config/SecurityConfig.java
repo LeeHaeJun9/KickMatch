@@ -4,6 +4,7 @@ import com.example.kickmatch.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -33,7 +34,6 @@ public class SecurityConfig {
                 // ✅ URL 별 보안 정책 설정
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("/h2-console/**", "/users/register", "/users/login", "/css/**", "/js/**","/","/images/**","/uploads/**").permitAll()
-                        .requestMatchers("/reservation/**").hasAnyRole("USER", "ADMIN")
                         .requestMatchers("/admin/**").hasRole("ADMIN")
                         .requestMatchers("/match/create").hasRole("ADMIN")
                         .anyRequest().authenticated()

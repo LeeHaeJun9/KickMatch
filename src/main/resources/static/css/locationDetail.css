@@ -32,8 +32,52 @@
 }
 
 .reservation-form {
-    margin-top: 20px;
+    margin-top: 30px;
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    gap: 16px;
+    max-width: 400px;
+    /* detail-container 패딩과 어울리게 좌우 정렬 */
+    margin-left: auto;
+    margin-right: auto;
+    font-family: 'Arial', sans-serif;
+}
+
+.reservation-form label {
+    font-weight: 600;
+    font-size: 1rem;
+    color: #333;
+    margin-bottom: 6px;
+}
+
+.reservation-form input[type="datetime-local"],
+.reservation-form select {
+    padding: 8px 12px;
+    font-size: 1rem;
+    border: 1.5px solid #ccc;
+    border-radius: 6px;
+    transition: border-color 0.3s ease;
+}
+
+.reservation-form input[type="datetime-local"]:focus,
+.reservation-form select:focus {
+    outline: none;
+    border-color: #19863aa1;
+    box-shadow: 0 0 5px #19863aa1;
+}
+
+.reservation-form button {
+    padding: 12px 0;
+    font-size: 1.1rem;
+    font-weight: 600;
+    background-color: #19863aa1;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.reservation-form button:hover {
+    background-color: #19863ab6;
 }

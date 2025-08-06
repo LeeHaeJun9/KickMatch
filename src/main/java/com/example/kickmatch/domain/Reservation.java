@@ -28,12 +28,18 @@ public class Reservation {
 
     private Integer durationMinutes;   // 예약 시간 (분)
 
-    private String status;             // 예약 상태 (예: 완료, 취소 등)
+    private LocalDateTime endTime;
+
+    @Enumerated(EnumType.STRING)
+    private ReservationStatus status;           // 예약 상태 (예: 완료, 취소 등)
 
     @PrePersist
     protected void onCreate() {
         if (reservedAt == null) {
             reservedAt = LocalDateTime.now();
+        }
+        if (status == null) {
+            status = ReservationStatus.PENDING;
         }
     }
 }

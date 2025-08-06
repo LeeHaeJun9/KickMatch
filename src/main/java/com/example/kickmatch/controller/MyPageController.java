@@ -1,8 +1,10 @@
 package com.example.kickmatch.controller;
 
 import com.example.kickmatch.domain.Match;
+import com.example.kickmatch.domain.Reservation;
 import com.example.kickmatch.domain.User;
 import com.example.kickmatch.service.MatchService;
+import com.example.kickmatch.service.ReservationService;
 import com.example.kickmatch.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -23,6 +25,7 @@ public class MyPageController {
 
     private final MatchService matchService;
     private final UserService userService;
+    private final ReservationService reservationService;
 
     @GetMapping("/mypage")
     public String myPage(Model model, @AuthenticationPrincipal org.springframework.security.core.userdetails.User springUser) {
@@ -43,11 +46,15 @@ public class MyPageController {
                         .filter(match -> match.getMatchDate().isBefore(now))
                         .collect(Collectors.toList());
 
+        List<Reservation> reservations = reservationService.findByUserId(user.getId());
+
 
 //        model.addAttribute("joinedMatches", joinedMatches);
         model.addAttribute("user", user);
         model.addAttribute("upcomingMatches", upcomingMatches);
         model.addAttribute("pastMatches", pastMatches);
+        model.addAttribute("reservations", reservations);
+
         return "my/mypage";
     }
 }

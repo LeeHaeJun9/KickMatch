@@ -29,6 +29,7 @@
 
     <!-- 숨겨진 구장 ID -->
     <input type="hidden" name="locationId" th:value="${location.id}" />
+    <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
 
     <!-- 예약 시작 시간 -->
     <label for="reservedAt">예약 시작 시간</label>

@@ -1,6 +1,7 @@
 package com.example.kickmatch.service;
 
 import com.example.kickmatch.domain.Reservation;
+import com.example.kickmatch.domain.ReservationStatus;
 import com.example.kickmatch.repository.ReservationRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -30,7 +31,7 @@ public class ReservationService {
         }
 
         if (reservation.getStatus() == null) {
-            reservation.setStatus("예약완료");
+            reservation.setStatus(ReservationStatus.CONFIRMED);
         }
 
         return   reservationRepository.save(reservation);
@@ -48,4 +49,14 @@ public class ReservationService {
     public Reservation save(Reservation reservation) {
         return reservationRepository.save(reservation);
     }
+
+    public List<Reservation> findByUserId(Long userId) {
+        return reservationRepository.findByUserId(userId);
+    }
+
+    public Reservation findById(Long id) {
+        return reservationRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("해당 예약을 찾을 수 없습니다."));
+    }
+
 }

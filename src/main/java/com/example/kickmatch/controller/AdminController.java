@@ -1,9 +1,12 @@
 package com.example.kickmatch.controller;
 
 import com.example.kickmatch.domain.Location;
+import com.example.kickmatch.domain.Reservation;
+import com.example.kickmatch.domain.ReservationStatus;
 import com.example.kickmatch.domain.User;
 import com.example.kickmatch.service.ImageService;
 import com.example.kickmatch.service.LocationService;
+import com.example.kickmatch.service.ReservationService;
 import com.example.kickmatch.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -26,6 +29,7 @@ public class AdminController {
     private final UserService userService;
     private final LocationService locationService;
     private final ImageService imageService;
+    private final ReservationService reservationService;
 
     // 1. 승인 대기중인 사용자 목록 페이지
     @GetMapping("/approval")
@@ -133,6 +137,31 @@ public class AdminController {
         Location location = locationService.findById(id);
         model.addAttribute("location", location);
         return "admin/location_detail"; // 뷰 이름
+    }
+
+    // 예약 확정 처리
+    @PostMapping("/reservation/{id}/confirm")
+    public String confirmReservation(@PathVariable Long id, RedirectAttributes redirectAttributes) {
+        try {
+            Reservation reservation = reservationService.findById(id);
+            if (reservation.getStatus() != ReservationStatus.PENDING) {
+                redirectAttributes.addFlashAttribute("error", "이미 확정되었거나 취소된 예약입니다.");
+                return "redirect:/admin/reservations";
+            }
+            reservation.setStatus(ReservationStatus.CONFIRMED);
+            reservationService.save(reservation);
+            redirectAttributes.addFlashAttribute("message", "예약이 성공적으로 확정되었습니다.");
+        } catch (Exception e) {
+            redirectAttributes.addFlashAttribute("error", "예약 확정 중 오류가 발생했습니다.");
+        }
+        return "redirect:/admin/reservations";  // 관리자 예약 리스트 페이지로 리다이렉트
+    }
+
+    // 관리자 예약 목록 페이지 (예시)
+    @GetMapping("/reservations")
+    public String listReservations(Model model) {
+        model.addAttribute("reservations", reservationService.findAll());
+        return "admin/reservation_list";  // 관리자용 예약 리스트 뷰
     }
 
 }
